@@ -1,0 +1,87 @@
+<div class="min-h-screen bg-gray-100 flex justify-center">
+
+  <div class="w-full max-w-[390px] h-screen bg-white flex flex-col">
+
+<div class="overflow-y-auto no-scrollbar">
+
+      <div class="px-4 pt-6 pb-3 text-[24px] font-semibold text-gray-900">
+        Mello
+      </div>
+
+      <div class="border-b border-gray-200"></div>
+
+     <div class="flex gap-3 px-4 mt-4 mb-3">
+
+  <button
+    (click)="setTab('bestie')"
+    [ngClass]="selectedTab === 'bestie'
+      ? 'border-yellow-400 bg-yellow-200 text-black'
+      : 'border-gray-300 text-gray-600'"
+    class="px-4 py-2 rounded-full border font-medium">
+    Bestie
+  </button>
+
+  <button
+    (click)="setTab('mankibaat')"
+    [ngClass]="selectedTab === 'mankibaat'
+      ? 'border-yellow-400 bg-yellow-200 text-black'
+      : 'border-gray-300 text-gray-600'"
+    class="px-4 py-2 rounded-full border font-medium">
+    Man ki Baat
+  </button>
+
+</div>
+
+      <div class="px-4 pb-24 space-y-4">
+
+        <div *ngFor="let chat of chats"
+             (click)="openChat(chat)"
+             class="bg-white p-4 rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.06)] flex flex-col gap-3 cursor-pointer">
+
+          <div class="flex items-start gap-3"> 
+
+            <img [src]="chat.image"
+                 class="w-12 h-12 rounded-xl object-cover flex-shrink-0" />
+
+            <div class="flex-1 flex items-start">
+
+              <div class="flex-1">
+                <h3 class="font-semibold text-[17px] text-gray-900">
+                  {{ chat.name }}
+                </h3>
+
+                <p class="text-gray-500 text-[14px] mt-1 leading-[20px]">
+                  {{ chat.desc }}
+                </p>
+              </div>
+
+              <div class="ml-2">
+                <div class="w-10 h-10 flex items-center justify-center rounded-full 
+                            border-2 border-yellow-400 bg-yellow-100">
+                  <img src="/messages.png" class="w-5 h-5" />
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="flex gap-3 flex-wrap">
+            <span *ngFor="let tag of chat.tags"
+                  class="px-4 py-1.5 bg-white text-gray-700 rounded-full text-sm 
+                         shadow-[0_2px_6px_rgba(255,221,87,0.5)]">
+              {{ tag }}
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+   
+
+  </div>
+
+</div>

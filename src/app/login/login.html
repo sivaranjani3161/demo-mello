@@ -1,0 +1,49 @@
+<div class="h-screen flex items-center justify-center bg-gray-100 px-4">
+
+  <form 
+    [formGroup]="mobileForm" 
+    (ngSubmit)="onSubmit()"
+    class="w-full max-w-sm bg-white p-6 rounded-2xl shadow">
+
+    <h2 class="text-xl font-semibold mb-6 text-center">
+      Enter Your Mobile Number
+    </h2>
+
+ <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden mb-3">
+
+  <div class="bg-gray-100 px-3 py-2 text-gray-700 font-medium border-r border-gray-300">
+    +91
+  </div>
+
+  <input
+    type="tel"
+    formControlName="phone"
+    placeholder="Enter Phone Number"
+    maxlength="10"
+    (input)="limitInput($event)"
+    class="w-full px-3 py-2 outline-none"
+  />
+
+</div>
+
+    <p 
+      *ngIf="mobileForm.controls['phone'].touched && mobileForm.controls['phone'].invalid"
+      class="text-red-500 text-sm mb-3">
+      Enter valid 10-digit number
+    </p>
+
+    <button
+  type="submit"
+  [disabled]="mobileForm.invalid"
+  [ngClass]="{
+    'bg-yellow-400 text-black': mobileForm.valid,
+    'bg-gray-400 text-white': mobileForm.invalid
+  }"
+  class="w-full py-2 rounded-lg transition-all duration-200">
+  
+  Continue
+
+</button>
+
+  </form>
+</div>

@@ -1,0 +1,74 @@
+<div class="min-h-screen bg-gray-100 flex justify-center">
+
+  <div class="w-full max-w-[390px] h-screen bg-white flex flex-col">
+
+    <div class="flex items-center gap-3 px-4 py-4 border-b border-gray-200">
+<span (click)="back()" class="text-2xl font-bold text-gray-900 cursor-pointer">
+  ←
+</span>
+      <img [src]="chat?.image"
+           class="w-9 h-9 rounded-full object-cover" />
+
+      <h2 class="font-semibold text-[18px]">
+        {{ chat?.name }}
+      </h2>
+    </div>
+
+    <div class="flex-1 overflow-y-auto px-4 py-4 flex flex-col justify-end">
+
+      <div class="flex justify-center mb-4">
+        <div class="px-5 py-2 rounded-full border text-sm text-gray-600 bg-white shadow-sm">
+          ✨ Powered by AI
+        </div>
+      </div>
+
+      <div class="flex justify-center text-xs text-gray-400 mb-4">
+        Today
+      </div>
+
+      <div *ngFor="let msg of messages"
+           [ngClass]="msg.type === 'user' ? 'flex justify-end mb-2' : 'flex justify-start mb-2'">
+
+        <div
+          class="px-4 py-3 rounded-2xl max-w-[75%] text-[14px] leading-[20px]"
+          [ngClass]="msg.type === 'user' 
+            ? 'bg-yellow-400 text-black' 
+            : 'bg-yellow-100 text-gray-800'">
+
+          {{ msg.text }}
+
+          <div class="text-[10px] text-gray-500 text-right mt-1">
+            {{ msg.time }}
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="px-3 py-3 border-t border-gray-200 bg-white">
+
+      <div class="flex items-center gap-2 bg-gray-100 rounded-full px-3 py-2">
+
+        <span class="flex items-center justify-center w-6 h-6">
+  <img src="/smile.png" class="w-5 h-5 object-contain" />
+</span>
+
+        <input
+          [(ngModel)]="input"
+          placeholder="Type Something"
+          class="flex-1 bg-transparent outline-none text-sm text-gray-700" />
+
+        <button (click)="send()"
+          class="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center shadow">
+          ➤
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
